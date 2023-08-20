@@ -1,10 +1,18 @@
-*,
+/* *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: inherit;
   box-sizing: inherit;
+} */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   /* border: 1px solid red; */
 }
 
@@ -13,11 +21,11 @@
   overflow-x: hidden;
 } */
 
-html {
+/* html {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar {
   width: 0px;
-}
+} */

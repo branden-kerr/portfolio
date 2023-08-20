@@ -77,7 +77,11 @@ function App() {
   ];
 
   const projects = [
-    { image: Chat, link: "https://chat-app-123-a8f46e64672a.herokuapp.com/" },
+    {
+      image: Chat,
+      link: "https://chat-app-123-a8f46e64672a.herokuapp.com/",
+      keyTechnologies: ["React", "Node.js", "Express.js"],
+    },
     {
       image: writerWebsite,
       link: "https://writer-website-9dc558f60089.herokuapp.com/",
@@ -147,10 +151,10 @@ function App() {
   const Project = styled("div")({
     backgroundColor: "#556ba7",
     borderRadius: "5px",
-    height: "500px",
     backgroundSize: "cover",
+    height: "100%",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundPosition: "center top",
     cursor: "pointer",
     transition: "transform 0.3s ease",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -181,7 +185,7 @@ function App() {
       style={{
         display: "grid",
         gridTemplateColumns: "25% 50% 25%",
-        gridTemplateRows: "85vh 1fr 70vh",
+        gridTemplateRows: "85vh 1fr 100vh",
       }}
     >
       <HeroContainer>
@@ -238,7 +242,7 @@ function App() {
                 fontSize: "1rem",
                 fontWeight: 400,
                 color: "#797979",
-                letterSpacing: "3px",
+                letterSpacing: "1px",
               }}
             >
               Committed to using technology to solve complex problems
@@ -259,18 +263,100 @@ function App() {
       </HeroContainer>
       <SectionOne>
         {projects.map((project, index) => (
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
+          <div
             key={index}
+            style={{
+              height: "750px",
+              backgroundColor: "#112C47",
+              borderRadius: "5px",
+              display: "flex",
+              flexDirection: "column",
+            }}
           >
-            <Project
+            <a
               style={{
-                backgroundImage: `url(${project.image})`,
+                width: "100%",
+                height: "70%",
+                display: "block",
               }}
-            ></Project>
-          </a>
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Project
+                style={{
+                  backgroundImage: `url(${project.image})`,
+                }}
+              ></Project>
+            </a>
+            <div
+              style={{
+                height: "30%",
+                width: "100%",
+                padding: "4% 7%",
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gridTemplateRows: "100%",
+              }}
+            >
+              <div
+                style={{
+                  gridColumn: "1 / 2",
+                  gridRow: "1 / 2",
+                  color: "white",
+                  fontFamily: "Chivo",
+                  letterSpacing: "2px",
+                  // backgroundColor: "green",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <div>
+                  <div>Key technologies Used:</div>
+                  <div
+                    style={{
+                      marginTop: "3px",
+                      marginLeft: "15px",
+                    }}
+                  >
+                    &gt; Firebase <br />
+                    &gt; React <br />
+                    &gt; TypeScript <br />
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  gridColumn: "2 / 3",
+                  gridRow: "1 / 2",
+                  color: "white",
+                  fontFamily: "Chivo",
+                  letterSpacing: "2px",
+                  // backgroundColor: "green",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <div>
+                  <div>Key technologies Used:</div>
+                  <div
+                    style={{
+                      marginTop: "3px",
+                      marginLeft: "15px",
+                    }}
+                  >
+                    &gt; Firebase <br />
+                    &gt; React <br />
+                    &gt; TypeScript <br />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
       </SectionOne>
       <SectionTwo>
