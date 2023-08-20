@@ -2,7 +2,7 @@ import "./App.css";
 import svgBackground from "./images/svgBackground.svg";
 import displayPhoto from "./images/displayPhoto.jpg";
 import { styled } from "@mui/system";
-import { Typography, Button, keyframes } from "@mui/material";
+import { Typography, keyframes } from "@mui/material";
 import React from "react";
 import {
   Chat,
@@ -303,7 +303,7 @@ function App() {
             >
               Committed to using technology to solve complex problems
             </Typography>
-            <Button
+            {/* <Button
               variant="contained"
               color="primary"
               href="/path_to_cv.pdf"
@@ -313,7 +313,7 @@ function App() {
               }}
             >
               Download CV
-            </Button>
+            </Button> */}
           </div>
         </HeroContent>
       </HeroContainer>
