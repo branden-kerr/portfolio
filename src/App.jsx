@@ -1,9 +1,8 @@
-// @ts-nocheck
 import "./App.css";
 import svgBackground from "./images/svgBackground.svg";
 import displayPhoto from "./images/displayPhoto.jpg";
 import { styled } from "@mui/system";
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, keyframes } from "@mui/material";
 import React from "react";
 import {
   Chat,
@@ -40,31 +39,32 @@ import {
   faWordpress,
   faBootstrap,
   faSquareJs,
+  faGithub,
 } from "./fontAwesomeIcons";
 
 function App() {
   const skills = [
-    { name: "CSS", icon: faCss3Alt, isFontAwesome: true },
-    { name: "Sass", icon: faSass, isFontAwesome: true },
     { name: "JavaScript", icon: faSquareJs, isFontAwesome: true },
-    { name: "Git", icon: faGit, isFontAwesome: true },
-    { name: "HTML", icon: faHtml5, isFontAwesome: true },
-    { name: "React", icon: faReact, isFontAwesome: true },
     { name: "Angular", icon: faAngular, isFontAwesome: true },
-    { name: "Java", icon: faJava, isFontAwesome: true },
-    { name: "AWS", icon: faAws, isFontAwesome: true },
-    { name: "Figma", icon: faFigma, isFontAwesome: true },
+    { name: "React", icon: faReact, isFontAwesome: true },
+    { name: "TypeScript", icon: typescriptSvg, isFontAwesome: false },
+    { name: "Git", icon: faGit, isFontAwesome: true },
     { name: "Google Cloud Platform", icon: faGoogle, isFontAwesome: true },
+    { name: "Ruby", icon: rubySvg, isFontAwesome: false },
+    { name: "Mongodb", icon: mongodbSvg, isFontAwesome: false },
+    { name: "Java", icon: faJava, isFontAwesome: true },
+    { name: "Firebase", icon: firebaseSvg, isFontAwesome: false },
+    { name: "AWS", icon: faAws, isFontAwesome: true },
+    { name: "HTML", icon: faHtml5, isFontAwesome: true },
+    { name: "Figma", icon: faFigma, isFontAwesome: true },
+    { name: "Sass", icon: faSass, isFontAwesome: true },
     { name: "Node.js", icon: faNodeJs, isFontAwesome: true },
     { name: "Wordpress", icon: faWordpress, isFontAwesome: true },
     { name: "Bootstrap", icon: faBootstrap, isFontAwesome: true },
-    { name: "TypeScript", icon: typescriptSvg, isFontAwesome: false },
     { name: "Express.js", icon: expressSvg, isFontAwesome: false },
+    { name: "CSS", icon: faCss3Alt, isFontAwesome: true },
     { name: "SEO", icon: seoSvg, isFontAwesome: false },
-    { name: "Firebase", icon: firebaseSvg, isFontAwesome: false },
-    { name: "Ruby", icon: rubySvg, isFontAwesome: false },
     { name: "Material UI", icon: materialSvg, isFontAwesome: false },
-    { name: "Mongodb", icon: mongodbSvg, isFontAwesome: false },
     { name: "Mongoose", icon: "", isFontAwesome: false },
     { name: "Photoshop", icon: photoshopSvg, isFontAwesome: false },
     { name: "Illustrator", icon: illustratorSvg, isFontAwesome: false },
@@ -80,27 +80,50 @@ function App() {
     {
       image: Chat,
       link: "https://chat-app-123-a8f46e64672a.herokuapp.com/",
-      keyTechnologies: ["React", "Node.js", "Express.js"],
+      keyTechnologies: ["React", "Typescript", "Express.js", "Material UI"],
+      Description:
+        "A user authenticated, firebase backen, chat app built with react and material UI. Users can create chat rooms and send messages to other users in real time.",
+      githubLink: "https://github.com/G93264/Chat",
     },
     {
       image: writerWebsite,
       link: "https://writer-website-9dc558f60089.herokuapp.com/",
+      keyTechnologies: ["MongoDb", "Express", "Mongoose", "SASS", "EJS"],
+      Description:
+        "A short story sharing site with a custom authentication system built in express, using mongoDb as the database.",
+      githubLink: "https://github.com/G93264/Writers-Website",
     },
     {
       image: dogFacts,
       link: "https://materialui-firebase-react-9ebefdc4e5dc.herokuapp.com/",
+      keyTechnologies: ["React", "ReactFire", "Firebase", "Material UI"],
+      Description:
+        "This website is built with React and Material UI and utilizes Firebase as the backend. It generates unique and interesting facts about our furry friends, providing users with an engaging experience.",
+      githubLink: "https://github.com/G93264/Dog-Facts-React-App",
     },
     {
       image: animalDictionary,
       link: "https://animal-information-efd0a1b671a2.herokuapp.com/",
+      keyTechnologies: ["Javascript", "HTML", "CSS"],
+      Description:
+        "Dive into the captivating world of animals with this interactive front-end website. Explore a vast collection of species and their fascinating details. Powered by JavaScript, HTML, and CSS.",
+      githubLink: "https://github.com/G93264/Animal-Dictionary",
     },
     {
       image: hotelLanding,
       link: "https://g93264.github.io/Proof-of-Concept-Landing-Page/",
+      keyTechnologies: ["HTML", "SASS"],
+      Description:
+        "A fully responsive landing page for a hotel built with HTML and SASS, with animations and transitions.",
+      githubLink: "https://github.com/G93264/Hotel-Page/tree/main",
     },
     {
       image: realtor,
       link: "https://css-sass-realtor-site-df768e8d6de9.herokuapp.com/",
+      keyTechnologies: ["jQuery", "HTML", "SASS", "Javascript", "Node.js"],
+      Description:
+        "Example real estate landing page, with css animations, and jquery functionality.",
+      githubLink: "https://github.com/G93264/Realtor",
     },
   ];
 
@@ -178,6 +201,39 @@ function App() {
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
+  });
+
+  const StyledSkill = styled("div")({
+    padding: "7px 40px",
+    margin: "0 13px",
+    borderRadius: "50px",
+    backgroundColor: "white",
+    display: "flex",
+    cursor: "default",
+    alignItems: "center",
+    transition: "all 0.2s ease",
+    "&:hover": {
+      transform: "scale(1.3)",
+      backgroundColor: "#88ccff",
+    },
+  });
+
+  const growShrink = keyframes({
+    "0%": { transform: "scale(1)" },
+    "50%": { transform: "scale(1.1)" },
+    "100%": { transform: "scale(1)" },
+  });
+
+  const GitHubLink = styled("a")({
+    fontSize: "35px",
+    marginTop: "20px",
+    color: "white",
+    transition: "color 0.5s ease",
+    borderRadius: "150px",
+    "&:hover": {
+      color: "#8ff8ff",
+      animation: `${growShrink} 1.5s ease-in-out infinite`,
+    },
   });
 
   return (
@@ -271,6 +327,7 @@ function App() {
               borderRadius: "5px",
               display: "flex",
               flexDirection: "column",
+              boxShadow: "inset 0 0 15px rgba(255, 255, 255, 0.38)",
             }}
           >
             <a
@@ -295,7 +352,7 @@ function App() {
                 width: "100%",
                 padding: "4% 7%",
                 display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
+                gridTemplateColumns: "30% 60%",
                 gridTemplateRows: "100%",
               }}
             >
@@ -306,24 +363,30 @@ function App() {
                   color: "white",
                   fontFamily: "Chivo",
                   letterSpacing: "2px",
-                  // backgroundColor: "green",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
+                  // backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  // padding: "20px 40px",
                 }}
               >
                 <div>
-                  <div>Key technologies Used:</div>
+                  <div
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Key technologies Used:
+                  </div>
                   <div
                     style={{
                       marginTop: "3px",
                       marginLeft: "15px",
                     }}
                   >
-                    &gt; Firebase <br />
-                    &gt; React <br />
-                    &gt; TypeScript <br />
+                    {project &&
+                      project.keyTechnologies &&
+                      project.keyTechnologies.map((technology, index) => (
+                        <div key={index}>&gt; {technology}</div>
+                      ))}
                   </div>
                 </div>
               </div>
@@ -334,26 +397,51 @@ function App() {
                   color: "white",
                   fontFamily: "Chivo",
                   letterSpacing: "2px",
+                  padding: "0 5%",
                   // backgroundColor: "green",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
+                  // padding: "20px 40px",
                 }}
               >
                 <div>
-                  <div>Key technologies Used:</div>
+                  <div
+                    style={{
+                      fontSize: "17px",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Description
+                  </div>
                   <div
                     style={{
                       marginTop: "3px",
                       marginLeft: "15px",
                     }}
                   >
-                    &gt; Firebase <br />
-                    &gt; React <br />
-                    &gt; TypeScript <br />
+                    &gt; {project.Description}
                   </div>
                 </div>
+              </div>
+              <div
+                style={{
+                  gridColumn: "3 / 4",
+                  gridRow: "1 / 2",
+                  color: "white",
+                  fontFamily: "Chivo",
+                  letterSpacing: "2px",
+                  // backgroundColor: "green",
+                  // padding: "20px 40px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                }}
+              >
+                <GitHubLink
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <FontAwesomeIcon icon={faGithub} />
+                </GitHubLink>
               </div>
             </div>
           </div>
@@ -366,6 +454,7 @@ function App() {
             marginBottom: "2rem",
             fontFamily: "Zilla Slab",
             color: "white",
+            cursor: "default",
           }}
         >
           SKILLS
@@ -382,18 +471,7 @@ function App() {
           }}
         >
           {skills.map((skill, index) => (
-            <div
-              key={index}
-              style={{
-                padding: "7px 40px",
-                margin: "0 13px",
-                borderRadius: "50px",
-                backgroundColor: "white",
-                display: "flex",
-                pointerEvents: "none",
-                alignItems: "center",
-              }}
-            >
+            <StyledSkill key={index}>
               {skill.isFontAwesome ? (
                 <FontAwesomeIcon
                   style={{
@@ -416,6 +494,7 @@ function App() {
 
                     display: skill.name === "Mongoose" ? "none" : null,
                   }}
+                  // @ts-ignore
                   src={skill.icon}
                 />
               )}
@@ -426,7 +505,7 @@ function App() {
               >
                 {skill.name}
               </p>
-            </div>
+            </StyledSkill>
           ))}
         </div>
       </SectionTwo>

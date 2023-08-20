@@ -15,8 +15,8 @@ import {
   faWordpress,
   faBootstrap,
   faSquareJs,
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { faCut } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faCss3Alt,
@@ -34,11 +34,11 @@ library.add(
   faWordpress,
   faBootstrap,
   faSquareJs,
+  faGithub,
 );
 
 export {
   faCss3Alt,
-  faCut,
   faSass,
   faHtml5,
   faReact,
@@ -52,4 +52,5 @@ export {
   faWordpress,
   faBootstrap,
   faSquareJs,
+  faGithub,
 };
