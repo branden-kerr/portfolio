@@ -78,63 +78,74 @@ function App() {
 
   const projects = [
     {
+      name: "Chat App",
       image: Chat,
       link: "https://chat-app-123-a8f46e64672a.herokuapp.com/",
       keyTechnologies: ["React", "Typescript", "Express.js", "Material UI"],
-      Description:
+      description:
         "A user authenticated, firebase backen, chat app built with react and material UI. Users can create chat rooms and send messages to other users in real time.",
       githubLink: "https://github.com/G93264/Chat",
     },
     {
+      name: "Writer Website",
       image: writerWebsite,
       link: "https://writer-website-9dc558f60089.herokuapp.com/",
       keyTechnologies: ["MongoDb", "Express", "Mongoose", "SASS", "EJS"],
-      Description:
+      description:
         "A short story sharing site with a custom authentication system built in express, using mongoDb as the database.",
       githubLink: "https://github.com/G93264/Writers-Website",
     },
     {
+      name: "Dog Facts React App",
       image: dogFacts,
       link: "https://materialui-firebase-react-9ebefdc4e5dc.herokuapp.com/",
       keyTechnologies: ["React", "ReactFire", "Firebase", "Material UI"],
-      Description:
+      description:
         "This website is built with React and Material UI and utilizes Firebase as the backend. It generates unique and interesting facts about our furry friends, providing users with an engaging experience.",
       githubLink: "https://github.com/G93264/Dog-Facts-React-App",
     },
     {
+      name: "Animal Dictionary",
       image: animalDictionary,
       link: "https://animal-information-efd0a1b671a2.herokuapp.com/",
       keyTechnologies: ["Javascript", "HTML", "CSS"],
-      Description:
+      description:
         "Dive into the captivating world of animals with this interactive front-end website. Explore a vast collection of species and their fascinating details. Powered by JavaScript, HTML, and CSS.",
       githubLink: "https://github.com/G93264/Animal-Dictionary",
     },
     {
+      name: "Hotel Landing Page",
       image: hotelLanding,
       link: "https://g93264.github.io/Proof-of-Concept-Landing-Page/",
       keyTechnologies: ["HTML", "SASS"],
-      Description:
+      description:
         "A fully responsive landing page for a hotel built with HTML and SASS, with animations and transitions.",
       githubLink: "https://github.com/G93264/Hotel-Page/tree/main",
     },
     {
+      name: "Realtor Site",
       image: realtor,
       link: "https://css-sass-realtor-site-df768e8d6de9.herokuapp.com/",
       keyTechnologies: ["jQuery", "HTML", "SASS", "Javascript", "Node.js"],
-      Description:
+      description:
         "Example real estate landing page, with css animations, and jquery functionality.",
       githubLink: "https://github.com/G93264/Realtor",
     },
   ];
 
-  // 882px
-
   const ContainerDiv = styled("div")({
     display: "grid",
     gridTemplateColumns: "15% 70% 15%",
     gridTemplateRows: "85vh 1fr 100vh",
+
     "@media (max-width: 882px)": {
       gridTemplateRows: "110vh 1fr 100vh",
+    },
+    "@media (max-width: 605px)": {
+      gridTemplateRows: "110vh 1fr 130vh",
+    },
+    "@media (max-width: 450px)": {
+      gridTemplateRows: "110vh 1fr 180vh",
     },
   });
 
@@ -158,6 +169,7 @@ function App() {
     borderRadius: "10px",
     justifyContent: "space-evenly",
     gridColumn: "2 / 10",
+    padding: "0 5%",
     // green
     // backgroundColor: "rgba(100, 150, 80, 0.5)",
     "@media (max-width: 882px)": {
@@ -191,52 +203,75 @@ function App() {
     border: "2.5px solid white",
     // background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #590052, #015667) border-box',
     // border: '2px solid transparent',
-    transform: "translateY(-15%)",
     "@media (max-width: 882px)": {
       minWidth: "260px",
       height: "260px",
       transform: "translateY(0)",
+    },
+    "@media (max-width: 428px)": {
+      minWidth: "230px",
+      height: "230px",
     },
   });
 
   const SectionOne = styled("div")({
     gridRow: "2 / 3",
     gridColumn: "1 / -1",
-    padding: "10% 25%",
+    padding: "10% 15%",
     backgroundColor: "rgb(2, 28, 53)",
     display: "grid",
-    gridTemplateColumns: "repeat(1, 1fr)",
+    gridTemplateColumns: "repeat(2, 1fr)",
     gap: "3rem",
-    "@media (max-width: 882px)": {
+    "@media (max-width: 1288px)": {
+      gridTemplateColumns: "repeat(1, 1fr)",
+    },
+    "@media (max-width: 1500px)": {
       padding: "10% 15%",
+    },
+    "@media (max-width: 660px)": {
+      padding: "10% 10%",
+    },
+    "@media (max-width: 428px)": {
+      padding: "10% 6%",
     },
   });
   // Projects
   const ProjectContainer = styled("div")({
-    height: "750px",
+    height: "650px",
     backgroundColor: "#112C47",
     borderRadius: "5px",
     display: "flex",
     flexDirection: "column",
     boxShadow: "inset 0 0 15px rgba(255, 255, 255, 0.38)",
-    "@media (max-width: 882px)": {
+    "@media (max-width: 1200px)": {
       height: "500px",
+    },
+    "@media (max-width: 428px)": {
+      height: "450px",
     },
   });
 
   const ProjectLinkContainer = styled("a")({
     width: "100%",
-    height: "70%",
+    height: "55%",
     display: "block",
+    "@media (max-width: 1200px)": {
+      height: "55%",
+    },
     "@media (max-width: 882px)": {
       height: "60%",
     },
+    "@media (max-width: 736px)": {
+      height: "55%",
+    },
+    "@media (max-width: 428px)": {
+      height: "50%",
+    },
   });
 
-  const Project = styled("div")({
+  const Project = styled("div")(({ name }) => ({
     backgroundColor: "#556ba7",
     borderRadius: "5px",
-    opacity: ".5",
     backgroundSize: "cover",
     height: "100%",
     backgroundRepeat: "no-repeat",
@@ -249,7 +284,19 @@ function App() {
       transform: "scale(1.05)",
       boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
     },
-  });
+    "@media (max-width: 597px)": {
+      fontSize: "13px",
+      backgroundPosition: name === "Chat App" ? "40% 100%" : "center top",
+    },
+    "@media (max-width: 530px)": {
+      fontSize: "13px",
+      backgroundPosition: name === "Chat App" ? "25% 100%" : "center top",
+    },
+    "@media (max-width: 377px)": {
+      fontSize: "13px",
+      backgroundPosition: name === "Chat App" ? "20% 100%" : "center top",
+    },
+  }));
 
   const ProjectDescriptionContainer = styled("div")({
     height: "30%",
@@ -258,15 +305,25 @@ function App() {
     display: "grid",
     gridTemplateColumns: "30% 60%",
     gridTemplateRows: "100%",
+    color: "white",
+    fontFamily: "Chivo",
+    letterSpacing: "2px",
+    "@media (max-width: 882px)": {
+      fontSize: "13px",
+    },
+    "@media (max-width: 430px)": {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "50%",
+      fontSize: "18px",
+    },
   });
 
   const KeyTechContainer = styled("div")({
     gridColumn: "1 / 2",
     gridRow: "1 / 2",
-    color: "white",
-    fontFamily: "Chivo",
-    letterSpacing: "2px",
-    // backgroundColor: "red",
   });
 
   const TechsListed = styled("div")({
@@ -277,15 +334,22 @@ function App() {
   const DescriptionTitle = styled("div")({
     fontSize: "17px",
     fontWeight: 700,
+    "@media (max-width: 882px)": {
+      fontSize: "14px",
+    },
+    "@media (max-width: 430px)": {
+      fontSize: "18px",
+      fontWeight: 800,
+    },
   });
 
   const DescriptionContainer = styled("div")({
     gridColumn: "2 / 3",
     gridRow: "1 / 2",
-    color: "white",
-    fontFamily: "Chivo",
-    letterSpacing: "2px",
     padding: "0 5%",
+    "@media (max-width: 430px)": {
+      display: "none",
+    },
   });
 
   const DescriptionContent = styled("div")({
@@ -302,6 +366,9 @@ function App() {
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-start",
+    "@media (max-width: 430px)": {
+      alignSelf: "flex-end",
+    },
   });
   // End Projects
 
@@ -317,6 +384,26 @@ function App() {
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
+    "@media (max-width: 1000px)": {
+      padding: "6% 10%",
+    },
+    "@media (max-width: 605px)": {
+      padding: "4% 7%",
+    },
+    "@media (max-width: 400px)": {
+      padding: "3% 4%",
+    },
+  });
+
+  // Skills
+
+  const StyledSkillContainer = styled("div")({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
+    alignContent: "space-evenly",
+    height: "80%",
   });
 
   const StyledSkill = styled("div")({
@@ -331,6 +418,9 @@ function App() {
     "&:hover": {
       transform: "scale(1.3)",
       backgroundColor: "#88ccff",
+    },
+    "@media (max-width: 450px)": {
+      padding: "7px 30px",
     },
   });
 
@@ -406,17 +496,6 @@ function App() {
             >
               Committed to using technology to solve complex problems
             </Typography>
-            {/* <Button
-              variant="contained"
-              color="primary"
-              href="/path_to_cv.pdf"
-              download
-              style={{
-                marginTop: "20px",
-              }}
-            >
-              Download CV
-            </Button> */}
           </HeroText>
         </HeroContent>
       </HeroContainer>
@@ -432,6 +511,7 @@ function App() {
                 style={{
                   backgroundImage: `url(${project.image})`,
                 }}
+                name={project.name}
               ></Project>
             </ProjectLinkContainer>
             <ProjectDescriptionContainer>
@@ -451,7 +531,7 @@ function App() {
                 <div>
                   <DescriptionTitle>Description</DescriptionTitle>
                   <DescriptionContent>
-                    &gt; {project.Description}
+                    &gt; {project.description}
                   </DescriptionContent>
                 </div>
               </DescriptionContainer>
@@ -481,16 +561,7 @@ function App() {
           SKILLS
         </h2>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexWrap: "wrap",
-            alignContent: "space-evenly",
-            height: "80%",
-          }}
-        >
+        <StyledSkillContainer>
           {skills.map((skill, index) => (
             <StyledSkill key={index}>
               {skill.isFontAwesome ? (
@@ -528,7 +599,7 @@ function App() {
               </p>
             </StyledSkill>
           ))}
-        </div>
+        </StyledSkillContainer>
       </SectionTwo>
     </ContainerDiv>
   );
