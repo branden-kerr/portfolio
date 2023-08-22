@@ -212,9 +212,31 @@ function App() {
     },
   });
   // Projects
+  const ProjectContainer = styled("div")({
+    height: "750px",
+    backgroundColor: "#112C47",
+    borderRadius: "5px",
+    display: "flex",
+    flexDirection: "column",
+    boxShadow: "inset 0 0 15px rgba(255, 255, 255, 0.38)",
+    "@media (max-width: 882px)": {
+      height: "500px",
+    },
+  });
+
+  const ProjectLinkContainer = styled("a")({
+    width: "100%",
+    height: "70%",
+    display: "block",
+    "@media (max-width: 882px)": {
+      height: "60%",
+    },
+  });
+
   const Project = styled("div")({
     backgroundColor: "#556ba7",
     borderRadius: "5px",
+    opacity: ".5",
     backgroundSize: "cover",
     height: "100%",
     backgroundRepeat: "no-repeat",
@@ -228,18 +250,58 @@ function App() {
       boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
     },
   });
-  const ProjectContainer = styled("div")({
-    height: "750px",
-    backgroundColor: "#112C47",
-    borderRadius: "5px",
-    display: "flex",
-    flexDirection: "column",
-    boxShadow: "inset 0 0 15px rgba(255, 255, 255, 0.38)",
-  });
-  const ProjectLinkContainer = styled("a")({
+
+  const ProjectDescriptionContainer = styled("div")({
+    height: "30%",
     width: "100%",
-    height: "70%",
-    display: "block",
+    padding: "4% 7%",
+    display: "grid",
+    gridTemplateColumns: "30% 60%",
+    gridTemplateRows: "100%",
+  });
+
+  const KeyTechContainer = styled("div")({
+    gridColumn: "1 / 2",
+    gridRow: "1 / 2",
+    color: "white",
+    fontFamily: "Chivo",
+    letterSpacing: "2px",
+    // backgroundColor: "red",
+  });
+
+  const TechsListed = styled("div")({
+    marginTop: "3px",
+    marginLeft: "15px",
+  });
+
+  const DescriptionTitle = styled("div")({
+    fontSize: "17px",
+    fontWeight: 700,
+  });
+
+  const DescriptionContainer = styled("div")({
+    gridColumn: "2 / 3",
+    gridRow: "1 / 2",
+    color: "white",
+    fontFamily: "Chivo",
+    letterSpacing: "2px",
+    padding: "0 5%",
+  });
+
+  const DescriptionContent = styled("div")({
+    marginTop: "3px",
+    marginLeft: "15px",
+  });
+
+  const GitColumn = styled("div")({
+    gridColumn: "3 / 4",
+    gridRow: "1 / 2",
+    color: "white",
+    fontFamily: "Chivo",
+    letterSpacing: "2px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start",
   });
   // End Projects
 
@@ -372,89 +434,28 @@ function App() {
                 }}
               ></Project>
             </ProjectLinkContainer>
-            <div
-              style={{
-                height: "30%",
-                width: "100%",
-                padding: "4% 7%",
-                display: "grid",
-                gridTemplateColumns: "30% 60%",
-                gridTemplateRows: "100%",
-              }}
-            >
-              <div
-                style={{
-                  gridColumn: "1 / 2",
-                  gridRow: "1 / 2",
-                  color: "white",
-                  fontFamily: "Chivo",
-                  letterSpacing: "2px",
-                }}
-              >
+            <ProjectDescriptionContainer>
+              <KeyTechContainer>
                 <div>
-                  <div
-                    style={{
-                      fontSize: "17px",
-                      fontWeight: 700,
-                    }}
-                  >
-                    Key technologies Used:
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "3px",
-                      marginLeft: "15px",
-                    }}
-                  >
+                  <DescriptionTitle>Key technologies Used:</DescriptionTitle>
+                  <TechsListed>
                     {project &&
                       project.keyTechnologies &&
                       project.keyTechnologies.map((technology, index) => (
                         <div key={index}>&gt; {technology}</div>
                       ))}
-                  </div>
+                  </TechsListed>
                 </div>
-              </div>
-              <div
-                style={{
-                  gridColumn: "2 / 3",
-                  gridRow: "1 / 2",
-                  color: "white",
-                  fontFamily: "Chivo",
-                  letterSpacing: "2px",
-                  padding: "0 5%",
-                }}
-              >
+              </KeyTechContainer>
+              <DescriptionContainer>
                 <div>
-                  <div
-                    style={{
-                      fontSize: "17px",
-                      fontWeight: 700,
-                    }}
-                  >
-                    Description
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "3px",
-                      marginLeft: "15px",
-                    }}
-                  >
+                  <DescriptionTitle>Description</DescriptionTitle>
+                  <DescriptionContent>
                     &gt; {project.Description}
-                  </div>
+                  </DescriptionContent>
                 </div>
-              </div>
-              <div
-                style={{
-                  gridColumn: "3 / 4",
-                  gridRow: "1 / 2",
-                  color: "white",
-                  fontFamily: "Chivo",
-                  letterSpacing: "2px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "flex-start",
-                }}
-              >
+              </DescriptionContainer>
+              <GitColumn>
                 <GitHubLink
                   href={project.githubLink}
                   target="_blank"
@@ -462,8 +463,8 @@ function App() {
                 >
                   <FontAwesomeIcon icon={faGithub} />
                 </GitHubLink>
-              </div>
-            </div>
+              </GitColumn>
+            </ProjectDescriptionContainer>
           </ProjectContainer>
         ))}
       </SectionOne>
