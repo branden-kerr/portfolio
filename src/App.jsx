@@ -127,25 +127,58 @@ function App() {
     },
   ];
 
+  // 882px
+
+  const ContainerDiv = styled("div")({
+    display: "grid",
+    gridTemplateColumns: "15% 70% 15%",
+    gridTemplateRows: "85vh 1fr 100vh",
+    "@media (max-width: 882px)": {
+      gridTemplateRows: "110vh 1fr 100vh",
+    },
+  });
+
   const HeroContainer = styled("div")({
     gridRow: "1 / 2",
     gridColumn: "1 / -1",
     background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${svgBackground})`,
     backgroundSize: "cover",
     display: "grid",
-    gridTemplateColumns: "25% repeat(8, 1fr) 25%",
+    gridTemplateColumns: "15% repeat(8, 1fr) 15%",
+    "@media (max-width: 882px)": {
+      dispaly: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
   });
 
   const HeroContent = styled("div")({
     display: "flex",
     alignItems: "center",
     borderRadius: "10px",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     gridColumn: "2 / 10",
+    // green
+    // backgroundColor: "rgba(100, 150, 80, 0.5)",
+    "@media (max-width: 882px)": {
+      flexDirection: "column",
+      height: "85%",
+    },
+  });
+  const HeroText = styled("div")({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    // red
+    // backgroundColor: "rgba(175, 100, 80, 0.5)",
+    "@media (max-width: 882px)": {
+      alignItems: "center",
+    },
   });
 
   const ProfileImage = styled("img")({
-    width: "200px",
+    minWidth: "200px",
     height: "200px",
     borderRadius: "50%",
     filter: "brightness(94%) saturate(0%)",
@@ -159,6 +192,11 @@ function App() {
     // background: 'linear-gradient(white, white) padding-box, linear-gradient(to right, #590052, #015667) border-box',
     // border: '2px solid transparent',
     transform: "translateY(-15%)",
+    "@media (max-width: 882px)": {
+      minWidth: "260px",
+      height: "260px",
+      transform: "translateY(0)",
+    },
   });
 
   const SectionOne = styled("div")({
@@ -169,8 +207,11 @@ function App() {
     display: "grid",
     gridTemplateColumns: "repeat(1, 1fr)",
     gap: "3rem",
+    "@media (max-width: 882px)": {
+      padding: "10% 15%",
+    },
   });
-
+  // Projects
   const Project = styled("div")({
     backgroundColor: "#556ba7",
     borderRadius: "5px",
@@ -182,12 +223,25 @@ function App() {
     transition: "transform 0.3s ease",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     border: "2px solid white",
-
     "&:hover": {
       transform: "scale(1.05)",
       boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
     },
   });
+  const ProjectContainer = styled("div")({
+    height: "750px",
+    backgroundColor: "#112C47",
+    borderRadius: "5px",
+    display: "flex",
+    flexDirection: "column",
+    boxShadow: "inset 0 0 15px rgba(255, 255, 255, 0.38)",
+  });
+  const ProjectLinkContainer = styled("a")({
+    width: "100%",
+    height: "70%",
+    display: "block",
+  });
+  // End Projects
 
   const SectionTwo = styled("div")({
     gridRow: "3 / 4",
@@ -237,24 +291,11 @@ function App() {
   });
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "25% 50% 25%",
-        gridTemplateRows: "85vh 1fr 100vh",
-      }}
-    >
+    <ContainerDiv>
       <HeroContainer>
         <HeroContent>
           <ProfileImage src={displayPhoto} alt="Profile" />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              justifyContent: "center",
-            }}
-          >
+          <HeroText>
             <Typography
               variant="h3"
               align="center"
@@ -314,28 +355,13 @@ function App() {
             >
               Download CV
             </Button> */}
-          </div>
+          </HeroText>
         </HeroContent>
       </HeroContainer>
       <SectionOne>
         {projects.map((project, index) => (
-          <div
-            key={index}
-            style={{
-              height: "750px",
-              backgroundColor: "#112C47",
-              borderRadius: "5px",
-              display: "flex",
-              flexDirection: "column",
-              boxShadow: "inset 0 0 15px rgba(255, 255, 255, 0.38)",
-            }}
-          >
-            <a
-              style={{
-                width: "100%",
-                height: "70%",
-                display: "block",
-              }}
+          <ProjectContainer key={index}>
+            <ProjectLinkContainer
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
@@ -345,7 +371,7 @@ function App() {
                   backgroundImage: `url(${project.image})`,
                 }}
               ></Project>
-            </a>
+            </ProjectLinkContainer>
             <div
               style={{
                 height: "30%",
@@ -363,8 +389,6 @@ function App() {
                   color: "white",
                   fontFamily: "Chivo",
                   letterSpacing: "2px",
-                  // backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  // padding: "20px 40px",
                 }}
               >
                 <div>
@@ -398,8 +422,6 @@ function App() {
                   fontFamily: "Chivo",
                   letterSpacing: "2px",
                   padding: "0 5%",
-                  // backgroundColor: "green",
-                  // padding: "20px 40px",
                 }}
               >
                 <div>
@@ -428,8 +450,6 @@ function App() {
                   color: "white",
                   fontFamily: "Chivo",
                   letterSpacing: "2px",
-                  // backgroundColor: "green",
-                  // padding: "20px 40px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "flex-start",
@@ -444,7 +464,7 @@ function App() {
                 </GitHubLink>
               </div>
             </div>
-          </div>
+          </ProjectContainer>
         ))}
       </SectionOne>
       <SectionTwo>
@@ -509,7 +529,7 @@ function App() {
           ))}
         </div>
       </SectionTwo>
-    </div>
+    </ContainerDiv>
   );
 }
 
