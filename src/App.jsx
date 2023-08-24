@@ -2,7 +2,7 @@ import "./App.css";
 import svgBackground from "./images/svgBackground.svg";
 import displayPhoto from "./images/displayPhoto.jpg";
 import { styled } from "@mui/system";
-import { Typography, keyframes } from "@mui/material";
+import { Button, Typography, keyframes } from "@mui/material";
 import React from "react";
 import {
   Chat,
@@ -40,6 +40,7 @@ import {
   faBootstrap,
   faSquareJs,
   faGithub,
+  faLinkedin,
 } from "./fontAwesomeIcons";
 
 function App() {
@@ -81,9 +82,15 @@ function App() {
       name: "Chat App",
       image: Chat,
       link: "https://chat-app-123-a8f46e64672a.herokuapp.com/",
-      keyTechnologies: ["React", "Typescript", "Express.js", "Material UI"],
+      keyTechnologies: [
+        "React",
+        "Typescript",
+        "Express.js",
+        "Material UI",
+        "Firebase",
+      ],
       description:
-        "A user authenticated, firebase backen, chat app built with react and material UI. Users can create chat rooms and send messages to other users in real time.",
+        "A user authenticated, firebase backend, chat app built with react and material UI. Users can create chat rooms and send messages to other users in real time.",
       githubLink: "https://github.com/G93264/Chat",
     },
     {
@@ -108,7 +115,7 @@ function App() {
       name: "Animal Dictionary",
       image: animalDictionary,
       link: "https://animal-information-efd0a1b671a2.herokuapp.com/",
-      keyTechnologies: ["Javascript", "HTML", "CSS"],
+      keyTechnologies: ["Javascript", "HTML", "CSS", "Node.js"],
       description:
         "Dive into the captivating world of animals with this interactive front-end website. Explore a vast collection of species and their fascinating details. Powered by JavaScript, HTML, and CSS.",
       githubLink: "https://github.com/G93264/Animal-Dictionary",
@@ -120,7 +127,8 @@ function App() {
       keyTechnologies: ["HTML", "SASS"],
       description:
         "A fully responsive landing page for a hotel built with HTML and SASS, with animations and transitions.",
-      githubLink: "https://github.com/G93264/Hotel-Page/tree/main",
+      githubLink:
+        "https://branden-kerr.github.io/Proof-of-Concept-Landing-Page",
     },
     {
       name: "Realtor Site",
@@ -170,13 +178,13 @@ function App() {
     justifyContent: "space-evenly",
     gridColumn: "2 / 10",
     padding: "0 5%",
-    // green
     // backgroundColor: "rgba(100, 150, 80, 0.5)",
     "@media (max-width: 882px)": {
       flexDirection: "column",
       height: "85%",
     },
   });
+
   const HeroText = styled("div")({
     display: "flex",
     flexDirection: "column",
@@ -186,6 +194,17 @@ function App() {
     // backgroundColor: "rgba(175, 100, 80, 0.5)",
     "@media (max-width: 882px)": {
       alignItems: "center",
+    },
+  });
+
+  const ButtonContainer = styled("div")({
+    display: "flex",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    width: "50%",
+    margin: "0 auto",
+    "@media (max-width: 1129px)": {
+      flexDirection: "column",
     },
   });
 
@@ -244,7 +263,7 @@ function App() {
     flexDirection: "column",
     boxShadow: "inset 0 0 15px rgba(255, 255, 255, 0.38)",
     "@media (max-width: 1200px)": {
-      height: "500px",
+      height: "750px",
     },
     "@media (max-width: 428px)": {
       height: "450px",
@@ -256,7 +275,7 @@ function App() {
     height: "55%",
     display: "block",
     "@media (max-width: 1200px)": {
-      height: "55%",
+      height: "65%",
     },
     "@media (max-width: 882px)": {
       height: "60%",
@@ -284,6 +303,12 @@ function App() {
       transform: "scale(1.05)",
       boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
     },
+    "@media (max-width: 1200px)": {
+      backgroundPosition: name === "Chat App" ? "30% 100%" : "center top",
+    },
+    "@media (max-width: 1100px)": {
+      backgroundPosition: name === "Chat App" ? "15% 100%" : "center top",
+    },
     "@media (max-width: 597px)": {
       fontSize: "13px",
       backgroundPosition: name === "Chat App" ? "40% 100%" : "center top",
@@ -308,6 +333,7 @@ function App() {
     color: "white",
     fontFamily: "Chivo",
     letterSpacing: "2px",
+    fontSize: "18px",
     "@media (max-width: 882px)": {
       fontSize: "13px",
     },
@@ -496,6 +522,50 @@ function App() {
             >
               Committed to using technology to solve complex problems
             </Typography>
+            <ButtonContainer>
+              <Button
+                variant="contained"
+                color="primary"
+                href="https://github.com/branden-kerr"
+                target="_blank"
+                style={{
+                  marginTop: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <FontAwesomeIcon
+                  style={{
+                    marginRight: "10px",
+                    fontSize: "18px",
+                  }}
+                  icon={faGithub}
+                />
+                <span>Github</span>
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                href="https://www.linkedin.com/in/branden-kerr-b610011b9/"
+                target="_blank"
+                style={{
+                  marginTop: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <FontAwesomeIcon
+                  style={{
+                    marginRight: "10px",
+                    fontSize: "18px",
+                  }}
+                  icon={faLinkedin}
+                />
+                <span>LinkedIn</span>
+              </Button>
+            </ButtonContainer>
           </HeroText>
         </HeroContent>
       </HeroContainer>

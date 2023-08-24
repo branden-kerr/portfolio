@@ -16,6 +16,7 @@ import {
   faBootstrap,
   faSquareJs,
   faGithub,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -35,6 +36,7 @@ library.add(
   faBootstrap,
   faSquareJs,
   faGithub,
+  faLinkedin,
 );
 
 export {
@@ -53,4 +55,5 @@ export {
   faBootstrap,
   faSquareJs,
   faGithub,
+  faLinkedin,
 };
