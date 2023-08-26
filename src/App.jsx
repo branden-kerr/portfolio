@@ -123,7 +123,7 @@ function App() {
     {
       name: "Hotel Landing Page",
       image: hotelLanding,
-      link: "https://g93264.github.io/Proof-of-Concept-Landing-Page/",
+      link: "https://branden-kerr.github.io/Proof-of-Concept-Landing-Page/",
       keyTechnologies: ["HTML", "SASS"],
       description:
         "A fully responsive landing page for a hotel built with HTML and SASS, with animations and transitions.",
