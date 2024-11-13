@@ -81,7 +81,7 @@ function App() {
     {
       name: "Chat App",
       image: Chat,
-      link: "https://chat-app-123-a8f46e64672a.herokuapp.com/",
+      link: "https://phpstack-1349599-5020362.cloudwaysapps.com/",
       keyTechnologies: [
         "React",
         "Typescript",
@@ -105,7 +105,7 @@ function App() {
     {
       name: "Dog Facts React App",
       image: dogFacts,
-      link: "https://materialui-firebase-react-9ebefdc4e5dc.herokuapp.com/",
+      link: "https://phpstack-1349599-5026408.cloudwaysapps.com/",
       keyTechnologies: ["React", "ReactFire", "Firebase", "Material UI"],
       description:
         "This website is built with React and Material UI and utilizes Firebase as the backend. It generates unique and interesting facts about our furry friends, providing users with an engaging experience.",

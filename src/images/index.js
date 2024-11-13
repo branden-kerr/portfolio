@@ -1,4 +1,4 @@
-import Chat from "./portfolioImages/Chat1.jpg";
+import Chat from "./portfolioImages/chat-app.webp";
 import animalDictionary from "./portfolioImages/animalDictionary1.jpg";
 import dogFacts from "./portfolioImages/dogFacts1.jpg";
 import hotelLanding from "./portfolioImages/hotelLanding1.jpg";
