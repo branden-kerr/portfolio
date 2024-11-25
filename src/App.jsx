@@ -1,9 +1,11 @@
+/* eslint-disable */
 import "./App.css";
 import svgBackground from "./images/svgBackground.svg";
 import displayPhoto from "./images/displayPhoto.jpg";
-import { styled } from "@mui/system";
+import { lineHeight, styled } from "@mui/system";
 import { Button, Typography, keyframes } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+
 import {
   Chat,
   animalDictionary,
@@ -77,6 +79,29 @@ function App() {
     },
   ];
 
+  const [videoLoaded, setVideoLoaded] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  const handlePlayClick = (index) => {
+    const updatedLoaded = [...videoLoaded];
+    updatedLoaded[index] = true;
+    setVideoLoaded(updatedLoaded);
+  };
+
+  const videos = [
+    { id: "AuNnLvHV3kg", title: "Video 1" },
+    { id: "dQce89KbVY8", title: "Video 2" },
+    { id: "TJ02GaLvwW8", title: "Video 3" },
+    { id: "rebKkDZ8mlI", title: "Video 4" },
+    { id: "kxDOe2Y4LE4", title: "Video 5" },
+  ];
+
   const projects = [
     {
       name: "Chat App",
@@ -90,7 +115,7 @@ function App() {
         "Firebase",
       ],
       description:
-        "A user authenticated, firebase backend, chat app built with react and material UI. Users can create chat rooms and send messages to other users in real time.",
+        "This project is a transplant from a much larger project I've been working on, but have not yet completed. It is a chat app that allows users to create chat rooms and send messages to other users in real time. In the future, I plan to add the ability to send gifs, images, and more.",
       githubLink: "https://github.com/G93264/Chat",
     },
     {
@@ -144,7 +169,7 @@ function App() {
   const ContainerDiv = styled("div")({
     display: "grid",
     gridTemplateColumns: "15% 70% 15%",
-    gridTemplateRows: "85vh 1fr 100vh",
+    gridTemplateRows: "85vh 1fr auto",
 
     "@media (max-width: 882px)": {
       gridTemplateRows: "110vh 1fr 100vh",
@@ -256,45 +281,27 @@ function App() {
   });
   // Projects
   const ProjectContainer = styled("div")({
-    height: "650px",
     backgroundColor: "#112C47",
     borderRadius: "5px",
     display: "flex",
     flexDirection: "column",
     boxShadow: "inset 0 0 15px rgba(255, 255, 255, 0.38)",
-    "@media (max-width: 1200px)": {
-      height: "750px",
-    },
-    "@media (max-width: 428px)": {
-      height: "450px",
-    },
   });
 
   const ProjectLinkContainer = styled("a")({
     width: "100%",
-    height: "55%",
     display: "block",
-    "@media (max-width: 1200px)": {
-      height: "65%",
-    },
-    "@media (max-width: 882px)": {
-      height: "60%",
-    },
-    "@media (max-width: 736px)": {
-      height: "55%",
-    },
-    "@media (max-width: 428px)": {
-      height: "50%",
-    },
   });
 
-  const Project = styled("div")(({ name }) => ({
+  const ProjectImage = styled("img")({
+    width: "100%",
+    height: "auto", // Keeps the aspect ratio intact
+    objectFit: "cover", // Ensures the image covers the area without stretching
+
     backgroundColor: "#556ba7",
     borderRadius: "5px",
     backgroundSize: "cover",
-    height: "100%",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center top",
+
     cursor: "pointer",
     transition: "transform 0.3s ease",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -303,25 +310,7 @@ function App() {
       transform: "scale(1.05)",
       boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
     },
-    "@media (max-width: 1200px)": {
-      backgroundPosition: name === "Chat App" ? "30% 100%" : "center top",
-    },
-    "@media (max-width: 1100px)": {
-      backgroundPosition: name === "Chat App" ? "15% 100%" : "center top",
-    },
-    "@media (max-width: 597px)": {
-      fontSize: "13px",
-      backgroundPosition: name === "Chat App" ? "40% 100%" : "center top",
-    },
-    "@media (max-width: 530px)": {
-      fontSize: "13px",
-      backgroundPosition: name === "Chat App" ? "25% 100%" : "center top",
-    },
-    "@media (max-width: 377px)": {
-      fontSize: "13px",
-      backgroundPosition: name === "Chat App" ? "20% 100%" : "center top",
-    },
-  }));
+  });
 
   const ProjectDescriptionContainer = styled("div")({
     height: "30%",
@@ -331,8 +320,8 @@ function App() {
     gridTemplateColumns: "30% 60%",
     gridTemplateRows: "100%",
     color: "white",
-    fontFamily: "Chivo",
-    letterSpacing: "2px",
+    fontFamily: "Roboto",
+
     fontSize: "18px",
     "@media (max-width: 882px)": {
       fontSize: "13px",
@@ -353,12 +342,23 @@ function App() {
   });
 
   const TechsListed = styled("div")({
+    marginLeft: "5px",
     marginTop: "3px",
-    marginLeft: "15px",
+  });
+
+  const Tech = styled("div")({
+    whiteSpace: "nowrap",
+    display: "block",
+    fontWeight: 200,
+
+    "@media (max-width: 1400px)": {
+      fontSize: "14px",
+      lineHeight: "20px",
+    },
   });
 
   const DescriptionTitle = styled("div")({
-    fontSize: "17px",
+    fontSize: "1.1rem",
     fontWeight: 700,
     "@media (max-width: 882px)": {
       fontSize: "14px",
@@ -380,15 +380,20 @@ function App() {
 
   const DescriptionContent = styled("div")({
     marginTop: "3px",
-    marginLeft: "15px",
+    marginLeft: "5px",
+    fontWeight: 200,
+    "@media (max-width: 1400px)": {
+      fontSize: "14px",
+      lineHeight: "20px",
+    },
   });
 
   const GitColumn = styled("div")({
     gridColumn: "3 / 4",
     gridRow: "1 / 2",
     color: "white",
-    fontFamily: "Chivo",
-    letterSpacing: "2px",
+    fontFamily: "Roboto",
+
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-start",
@@ -401,12 +406,12 @@ function App() {
   const SectionTwo = styled("div")({
     gridRow: "3 / 4",
     gridColumn: "1 / -1",
-    padding: "10% 22%",
+    padding: "8% 15%",
     backgroundColor: "#FF3CAC",
     backgroundImage:
       "linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%)",
     display: "flex",
-    height: "100%",
+    // height: "100%",
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
@@ -429,7 +434,8 @@ function App() {
     alignItems: "center",
     flexWrap: "wrap",
     alignContent: "space-evenly",
-    height: "80%",
+    // height: "80%",
+    gap: "1rem",
   });
 
   const StyledSkill = styled("div")({
@@ -458,7 +464,6 @@ function App() {
 
   const GitHubLink = styled("a")({
     fontSize: "35px",
-    marginTop: "20px",
     color: "white",
     transition: "color 0.5s ease",
     borderRadius: "150px",
@@ -467,6 +472,112 @@ function App() {
       animation: `${growShrink} 1.5s ease-in-out infinite`,
     },
   });
+
+  const SectionThree = styled("div")({
+    gridRow: "4 / 5",
+    gridColumn: "1 / -1",
+    padding: "8% 15%",
+    backgroundColor: "#021C35",
+    // backgroundImage:
+    //   "linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%)",
+    display: "flex",
+    height: "100%",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "3rem",
+    "@media (max-width: 1000px)": {
+      padding: "6% 10%",
+    },
+    "@media (max-width: 605px)": {
+      padding: "4% 7%",
+    },
+    "@media (max-width: 400px)": {
+      padding: "3% 4%",
+    },
+  });
+
+  const SectionHeading = styled("h2")({
+    fontSize: "36px",
+    marginBottom: "2rem",
+    fontFamily: "Zilla Slab",
+    color: "white",
+    cursor: "default",
+  });
+
+  const FeaturedVideo = styled("div")({
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+
+    padding: "10px",
+    gap: "3rem",
+  });
+
+  const VideoIframe = styled("div")({
+    position: "relative",
+    width: "50%",
+    aspectRatio: "1901 / 1071",
+    borderRadius: "15px",
+    border: "2px solid white",
+    overflow: "hidden",
+  });
+
+  // const SectionThreeB = styled("div")({
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   alignItems: "center",
+  //   width: "100%",
+  //   backgroundColor: "#021C35",
+  //   gap: "3rem",
+  // });
+
+  // const VideoCardContainer = styled("div")({
+  //   display: "flex",
+  //   flexWrap: "wrap",
+  //   gap: "1rem",
+  //   justifyContent: "flex-start",
+  //   width: "100%",
+  // });
+
+  // const VideoCard = styled("div")({
+  //   width: "30%",
+  //   position: "relative",
+  //   aspectRatio: "1300 / 729",
+  //   border: "1px solid white",
+  //   borderRadius: "2px",
+
+  //   overflow: "hidden",
+  //   backgroundColor: "#333",
+  //   cursor: "pointer",
+  //   backgroundSize: "cover",
+  //   backgroundPosition: "center",
+  //   marginBottom: "1rem",
+  // });
+
+  // const PlayButton = styled("button")({
+  //   position: "absolute",
+  //   top: "50%",
+  //   left: "50%",
+  //   transform: "translate(-50%, -50%)",
+  //   backgroundColor: "rgba(0, 0, 0, 0.7)",
+  //   color: "white",
+  //   fontSize: "1.5rem",
+  //   padding: "10px 20px",
+  //   border: "none",
+  //   borderRadius: "5px",
+  //   cursor: "pointer",
+  //   zIndex: 10,
+  // });
+
+  // const VideoIframe2 = styled("iframe")({
+  //   position: "absolute",
+  //   top: 0,
+  //   left: 0,
+  //   width: "100%",
+  //   height: "100%",
+  //   border: "none",
+  // });
 
   return (
     <ContainerDiv>
@@ -501,19 +612,16 @@ function App() {
                 fontWeight: 700,
                 color: "#ffff",
                 letterSpacing: "6px",
-                // background: '-webkit-linear-gradient(right, #9766EF, #1EA5CB)',
-                // webkitBackgroundClip: 'text',
-                // webkitTextFillColor: 'transparent',
               }}
             >
-              full stack developer
+              full stack developer.
             </Typography>
             <Typography
               variant="h6"
               align="center"
               gutterBottom
               style={{
-                fontFamily: "Chivo",
+                fontFamily: "Roboto",
                 fontSize: "1rem",
                 fontWeight: 400,
                 color: "#797979",
@@ -577,22 +685,17 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Project
-                style={{
-                  backgroundImage: `url(${project.image})`,
-                }}
-                name={project.name}
-              ></Project>
+              <ProjectImage src={project.image} alt={project.name} />
             </ProjectLinkContainer>
             <ProjectDescriptionContainer>
               <KeyTechContainer>
                 <div>
-                  <DescriptionTitle>Key technologies Used:</DescriptionTitle>
+                  <DescriptionTitle>Technologies</DescriptionTitle>
                   <TechsListed>
                     {project &&
                       project.keyTechnologies &&
                       project.keyTechnologies.map((technology, index) => (
-                        <div key={index}>&gt; {technology}</div>
+                        <Tech>&gt; {technology}</Tech>
                       ))}
                   </TechsListed>
                 </div>
@@ -600,9 +703,7 @@ function App() {
               <DescriptionContainer>
                 <div>
                   <DescriptionTitle>Description</DescriptionTitle>
-                  <DescriptionContent>
-                    &gt; {project.description}
-                  </DescriptionContent>
+                  <DescriptionContent>{project.description}</DescriptionContent>
                 </div>
               </DescriptionContainer>
               <GitColumn>
@@ -619,17 +720,7 @@ function App() {
         ))}
       </SectionOne>
       <SectionTwo>
-        <h2
-          style={{
-            fontSize: "36px",
-            marginBottom: "2rem",
-            fontFamily: "Zilla Slab",
-            color: "white",
-            cursor: "default",
-          }}
-        >
-          SKILLS
-        </h2>
+        <SectionHeading>SKILLS</SectionHeading>
 
         <StyledSkillContainer>
           {skills.map((skill, index) => (
@@ -671,8 +762,95 @@ function App() {
           ))}
         </StyledSkillContainer>
       </SectionTwo>
+
+      <SectionThree>
+        <SectionHeading>Recent Videos</SectionHeading>
+        <FeaturedVideo>
+          <VideoIframe>
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/5SXD_Y8KeKM?autoplay=1&mute=1&loop=1&playlist=5SXD_Y8KeKM"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                objectFit: "cover", // Make sure the video covers the entire area
+              }}
+            ></iframe>
+          </VideoIframe>
+          <div
+            style={{
+              width: "50%",
+              padding: "20px",
+              borderRadius: "10px",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: "Roboto",
+                fontWeight: "700",
+                fontSize: "1.2rem",
+                color: "white",
+                marginBottom: "10px",
+              }}
+            >
+              What Inspired Me
+            </h2>
+            <p
+              style={{
+                fontFamily: "Roboto",
+                fontWeight: "400",
+                fontSize: "1rem",
+                color: "white",
+                lineHeight: "1.6",
+                marginBottom: "20px",
+              }}
+            >
+              I created this project to both document my learning journey and
+              share it with others. The goal was to deliver concise, valuable
+              content that simplifies complex topics. Despite not promoting the
+              video it was still able to gain slight traction, which reinforced
+              the idea that quality can make a big difference. The plan in the
+              future is to continue making videos, both for personal interest
+              and as a mechanism to boil down complex topics into digestible
+              content.
+            </p>
+          </div>
+        </FeaturedVideo>
+        {/* <SectionThreeB>
+          <SectionHeading>More Videos</SectionHeading>
+          <VideoCardContainer>
+            {videos.map((video, index) => (
+              <VideoCard
+                key={index}
+                style={{
+                  backgroundImage: `url(https://img.youtube.com/vi/${video.id}/hqdefault.jpg)`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                {!videoLoaded[index] ? (
+                  <PlayButton onClick={() => handlePlayClick(index)}>
+                    Play Video
+                  </PlayButton>
+                ) : (
+                  <VideoIframe2
+                    src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                  />
+                )}
+              </VideoCard>
+            ))}
+          </VideoCardContainer>
+        </SectionThreeB> */}
+      </SectionThree>
     </ContainerDiv>
   );
 }
-
 export default App;
