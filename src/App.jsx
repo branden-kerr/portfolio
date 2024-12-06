@@ -43,6 +43,9 @@ import {
   faSquareJs,
   faGithub,
   faLinkedin,
+  faYoutube,
+  // prettier-ignore
+  faStar,
 } from "./fontAwesomeIcons";
 
 function App() {
@@ -76,6 +79,15 @@ function App() {
       name: "Serverless Architecture",
       icon: serverlessSvg,
       isFontAwesome: false,
+    },
+  ];
+
+  const VideosTwo = [
+    {
+      name: "JavaScript",
+      link: "Learn Big O in Three Minutes: Analogies & Animations",
+      icon: faYoutube,
+      isFontAwesome: true,
     },
   ];
 
@@ -115,7 +127,7 @@ function App() {
         "Firebase",
       ],
       description:
-        "This project is a transplant from a much larger project I've been working on, but have not yet completed. It is a chat app that allows users to create chat rooms and send messages to other users in real time. In the future, I plan to add the ability to send gifs, images, and more.",
+        "A user authenticated, firebase backend, chat app built with react and material UI. Users can create chat rooms and send messages to other users in real time.",
       githubLink: "https://github.com/G93264/Chat",
     },
     {
@@ -168,17 +180,17 @@ function App() {
 
   const ContainerDiv = styled("div")({
     display: "grid",
-    gridTemplateColumns: "15% 70% 15%",
-    gridTemplateRows: "85vh 1fr auto",
+    gridTemplateColumns: "15% 70% 15% auto",
+    gridTemplateRows: "85vh 1fr 100vh auto",
 
     "@media (max-width: 882px)": {
-      gridTemplateRows: "110vh 1fr 100vh",
+      gridTemplateRows: "110vh 1fr 100vh auto",
     },
     "@media (max-width: 605px)": {
-      gridTemplateRows: "110vh 1fr 130vh",
+      gridTemplateRows: "110vh 1fr 130vh auto",
     },
     "@media (max-width: 450px)": {
-      gridTemplateRows: "110vh 1fr 180vh",
+      gridTemplateRows: "110vh 1fr auto auto",
     },
   });
 
@@ -320,7 +332,7 @@ function App() {
     gridTemplateColumns: "30% 60%",
     gridTemplateRows: "100%",
     color: "white",
-    fontFamily: "Roboto",
+    fontFamily: "Chivo",
 
     fontSize: "18px",
     "@media (max-width: 882px)": {
@@ -349,7 +361,7 @@ function App() {
   const Tech = styled("div")({
     whiteSpace: "nowrap",
     display: "block",
-    fontWeight: 200,
+    fontWeight: 400,
 
     "@media (max-width: 1400px)": {
       fontSize: "14px",
@@ -358,7 +370,10 @@ function App() {
   });
 
   const DescriptionTitle = styled("div")({
-    fontSize: "1.1rem",
+    fontSize: "1.3rem",
+    marginBottom: "12px",
+    letterSpacing: "1.3px",
+    textDecoration: "underline",
     fontWeight: 700,
     "@media (max-width: 882px)": {
       fontSize: "14px",
@@ -381,7 +396,7 @@ function App() {
   const DescriptionContent = styled("div")({
     marginTop: "3px",
     marginLeft: "5px",
-    fontWeight: 200,
+    fontWeight: 400,
     "@media (max-width: 1400px)": {
       fontSize: "14px",
       lineHeight: "20px",
@@ -392,7 +407,7 @@ function App() {
     gridColumn: "3 / 4",
     gridRow: "1 / 2",
     color: "white",
-    fontFamily: "Roboto",
+    fontFamily: "Chivo",
 
     display: "flex",
     justifyContent: "center",
@@ -406,12 +421,12 @@ function App() {
   const SectionTwo = styled("div")({
     gridRow: "3 / 4",
     gridColumn: "1 / -1",
-    padding: "8% 15%",
+    padding: "10% 22%",
     backgroundColor: "#FF3CAC",
     backgroundImage:
       "linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%)",
     display: "flex",
-    // height: "100%",
+    height: "100%",
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
@@ -421,8 +436,8 @@ function App() {
     "@media (max-width: 605px)": {
       padding: "4% 7%",
     },
-    "@media (max-width: 400px)": {
-      padding: "3% 4%",
+    "@media (max-width: 500px)": {
+      padding: "7vh 4%",
     },
   });
 
@@ -434,8 +449,11 @@ function App() {
     alignItems: "center",
     flexWrap: "wrap",
     alignContent: "space-evenly",
-    // height: "80%",
-    gap: "1rem",
+
+    gap: "1.5rem",
+    "@media (max-width: 500px)": {
+      // gap: "0px"
+    },
   });
 
   const StyledSkill = styled("div")({
@@ -493,7 +511,7 @@ function App() {
       padding: "4% 7%",
     },
     "@media (max-width: 400px)": {
-      padding: "3% 4%",
+      padding: "900px",
     },
   });
 
@@ -521,6 +539,33 @@ function App() {
     borderRadius: "15px",
     border: "2px solid white",
     overflow: "hidden",
+  });
+
+  const VideoTitleFeature = styled("a")({
+    color: "#c2c2c2",
+    fontSize: "1.3rem",
+    fontFamily: "Chivo",
+    display: "inline-block",
+    transition: "all 0.3s ease",
+    cursor: "pointer",
+    "&:hover": {
+      textDecoration: "underline",
+            color: "white"
+    },
+  });
+
+  const VideoTitle = styled("a")({
+    color: "#c2c2c2",
+    fontSize: "1rem",
+    fontFamily: "Chivo",
+    display: "inline-block",
+    transition: "all 0.3s ease",
+    textDecoration: "none",
+    cursor: "pointer",
+    "&:hover": {
+      textDecoration: "underline",
+      color: "white"
+    },
   });
 
   // const SectionThreeB = styled("div")({
@@ -621,7 +666,7 @@ function App() {
               align="center"
               gutterBottom
               style={{
-                fontFamily: "Roboto",
+                fontFamily: "Chivo",
                 fontSize: "1rem",
                 fontWeight: 400,
                 color: "#797979",
@@ -720,7 +765,17 @@ function App() {
         ))}
       </SectionOne>
       <SectionTwo>
-        <SectionHeading>SKILLS</SectionHeading>
+        <h2
+          style={{
+            fontSize: "36px",
+            marginBottom: "2rem",
+            fontFamily: "Zilla Slab",
+            color: "white",
+            cursor: "default",
+          }}
+        >
+          SKILLS
+        </h2>
 
         <StyledSkillContainer>
           {skills.map((skill, index) => (
@@ -764,8 +819,69 @@ function App() {
       </SectionTwo>
 
       <SectionThree>
-        <SectionHeading>Recent Videos</SectionHeading>
-        <FeaturedVideo>
+        <SectionHeading>Other Work/Misc</SectionHeading>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "40px",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "60vw",
+          }}
+        >
+          <div>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+              }}
+            >
+              <FontAwesomeIcon
+                style={{
+                  transform: "translateX(-10px)",
+                  display: "inline-block",
+                  color: "white",
+                  fontSize: "36px",
+                }}
+                // @ts-ignore
+                icon={faYoutube}
+              />
+
+              <VideoTitleFeature href="https://www.youtube.com/watch?v=5SXD_Y8KeKM" target="_blank">
+                Learn Big O in Three Minutes: Analogies & Animations
+              </VideoTitleFeature>
+            </div>
+          </div>
+
+          <div 
+          style={{
+            gap: "40px",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-around"
+          }}
+          >
+            <VideoTitle href="https://www.youtube.com/watch?v=AuNnLvHV3kg" target="_blank">
+            Memo in React in Five minutes
+            </VideoTitle>
+            <VideoTitle href="https://www.youtube.com/watch?v=dQce89KbVY8" target="_blank">
+            Learn React's UseCallback in less than Seven minutes
+            </VideoTitle>
+            <VideoTitle href="https://www.youtube.com/watch?v=TJ02GaLvwW8" target="_blank">
+            Boost Your Web Performance with Throttle
+            </VideoTitle>
+            <VideoTitle href="https://www.youtube.com/watch?v=rebKkDZ8mlI" target="_blank">
+            Solving LeetCode 295: Find Median from Data Stream in TypeScript
+            </VideoTitle>
+            <VideoTitle href="https://www.youtube.com/watch?v=kxDOe2Y4LE4&t=10s" target="_blank">
+            Mastering Debounce: Optimizing Performance in JavaScript
+            </VideoTitle>
+          </div>
+        </div>
+
+        {/* <FeaturedVideo>
           <VideoIframe>
             <iframe
               width="100%"
@@ -792,7 +908,7 @@ function App() {
           >
             <h2
               style={{
-                fontFamily: "Roboto",
+                fontFamily: "Chivo",
                 fontWeight: "700",
                 fontSize: "1.2rem",
                 color: "white",
@@ -803,7 +919,7 @@ function App() {
             </h2>
             <p
               style={{
-                fontFamily: "Roboto",
+                fontFamily: "Chivo",
                 fontWeight: "400",
                 fontSize: "1rem",
                 color: "white",
@@ -821,34 +937,7 @@ function App() {
               content.
             </p>
           </div>
-        </FeaturedVideo>
-        {/* <SectionThreeB>
-          <SectionHeading>More Videos</SectionHeading>
-          <VideoCardContainer>
-            {videos.map((video, index) => (
-              <VideoCard
-                key={index}
-                style={{
-                  backgroundImage: `url(https://img.youtube.com/vi/${video.id}/hqdefault.jpg)`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              >
-                {!videoLoaded[index] ? (
-                  <PlayButton onClick={() => handlePlayClick(index)}>
-                    Play Video
-                  </PlayButton>
-                ) : (
-                  <VideoIframe2
-                    src={`https://www.youtube.com/embed/${video.id}?autoplay=1`}
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                  />
-                )}
-              </VideoCard>
-            ))}
-          </VideoCardContainer>
-        </SectionThreeB> */}
+        </FeaturedVideo> */}
       </SectionThree>
     </ContainerDiv>
   );

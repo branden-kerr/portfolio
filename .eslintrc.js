@@ -6,7 +6,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended",
   ],
   overrides: [
     {
@@ -24,5 +24,8 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react"],
-  rules: {},
+    rules: {
+      "prettier/prettier": "off"
+    }
+  
 };

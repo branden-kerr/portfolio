@@ -1,3 +1,4 @@
+/*eslint-disable */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faSass,
@@ -17,7 +18,10 @@ import {
   faSquareJs,
   faGithub,
   faLinkedin,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+
+import {faStar} from "@fortawesome/free-regular-svg-icons";
 
 library.add(
   faCss3Alt,
@@ -37,6 +41,8 @@ library.add(
   faSquareJs,
   faGithub,
   faLinkedin,
+  faYoutube,
+  faStar,
 );
 
 export {
@@ -56,4 +62,6 @@ export {
   faSquareJs,
   faGithub,
   faLinkedin,
+  faYoutube,
+  faStar,
 };
